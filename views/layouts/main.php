@@ -27,41 +27,37 @@ AppAsset::register($this);
 </head>
 
 <body>
-    <?php $this->beginBody() ?>
+    <?php
+    $this->beginBody();
 
-    <div class="wrap">
-        <?php
-        NavBar::begin([
-            'brandLabel' => Yii::$app->name,
-            'brandUrl' => Yii::$app->homeUrl,
-            'options' => [
-                'class' => 'navbar-inverse navbar-fixed-top',
-            ],
-        ]);
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
-            'items' => [
-                // ['label' => 'Home', 'url' => ['/site/index']],
-                Yii::$app->user->isGuest ? (['label' => 'Login', 'url' => ['/site/login']]) : ('<li>'
-                    . Html::beginForm(['/site/logout'], 'post')
-                    . Html::submitButton(
-                        'Logout (' . UserTable::getFullUserInfoById(Yii::$app->user->identity->id)->name . ')',
-                        ['class' => 'btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>')
-            ],
-        ]);
-        NavBar::end();
-        ?>
+    NavBar::begin([
+        'brandLabel' => Yii::$app->name,
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'navbar-inverse',
+            'style' => 'margin-bottom: 0;'
+        ],
+    ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => [
+            // ['label' => 'Home', 'url' => ['/site/index']],
+            Yii::$app->user->isGuest ? (['label' => 'Einloggen', 'url' => ['/site/login']]) : ('<li>'
+                . Html::beginForm(['/site/logout'], 'post')
+                . Html::submitButton(
+                    'Abmelden (' . UserTable::getFullUserInfoById(Yii::$app->user->identity->id)->name . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>')
+        ],
+    ]);
 
-        <div class="container">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-            <?= Alert::widget() ?>
-            <?= $content ?>
-        </div>
+    NavBar::end();
+    ?>
+
+    <div>
+        <?= $content ?>
     </div>
 
     <?php $this->endBody() ?>

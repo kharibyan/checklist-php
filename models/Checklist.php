@@ -19,6 +19,10 @@ use Yii;
  */
 class Checklist extends \yii\db\ActiveRecord
 {
+
+    public $checklistItems;
+    public $ready;
+
     /**
      * {@inheritdoc}
      */
@@ -57,5 +61,10 @@ class Checklist extends \yii\db\ActiveRecord
             'owner_user_id' => 'Owner User ID',
             'comment' => 'Comment',
         ];
+    }
+
+    public function getChecklistItems()
+    {
+        return $this->hasMany(ChecklistItem::class, ['checklist_id' => 'id']);
     }
 }

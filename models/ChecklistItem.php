@@ -56,4 +56,9 @@ class ChecklistItem extends \yii\db\ActiveRecord
             'comment' => 'Comment',
         ];
     }
+
+    public function getChecklist()
+    {
+        return $this->hasOne(Checklist::class, ['id' => 'checklist_id']);
+    }
 }
