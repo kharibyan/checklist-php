@@ -5,21 +5,23 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "user".
+ * This is the model class for table "checklist_template".
  *
  * @property int $id
- * @property string $loginname
  * @property string $name
- * @property int $admin
+ * @property int $owner_user_id
  */
-class UserTable extends \yii\db\ActiveRecord
+class ChecklistTemplate extends \yii\db\ActiveRecord
 {
+
+    public $checklistItemTemplates;
+    
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'user';
+        return 'checklist_template';
     }
 
     /**
@@ -28,9 +30,8 @@ class UserTable extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['loginname', 'name'], 'required'],
-            [['admin'], 'integer'],
-            [['loginname'], 'string', 'max' => 50],
+            [['name'], 'required'],
+            [['owner_user_id'], 'integer'],
             [['name'], 'string', 'max' => 100],
         ];
     }
@@ -42,14 +43,8 @@ class UserTable extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'loginname' => 'Loginname',
             'name' => 'Name',
-            'admin' => 'Admin',
+            'owner_user_id' => 'Owner User ID',
         ];
-    }
-
-    public static function getFullUserInfo($id)
-    {
-        return static::findOne(['id' => $id]);
     }
 }

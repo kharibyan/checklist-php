@@ -2,33 +2,49 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use app\models\State;
 ?>
 
+
 <div>
-    <ul>
-        <li>
-            <?= Html::encode("{$checklistItem->item}") ?>
-        </li>
-        <li>
-            <?= Html::encode("{$checklistItem->state_id}") ?>
-        </li>
-        <li>
-            <?= Html::encode("{$checklistItem->comment}") ?>
-        </li>
-        <li>History :
-            <ul>
-                <?php foreach ($checklistItemHistory as $history) : ?>
-                    <li>
-                        <?= Html::encode("{$history->created_at}") ?>
-                    </li>
-                    <li>
-                        <?= Html::encode("{$history->state_id_new}") ?>
-                    </li>
-                    <li>
-                        <?= Html::encode("{$history->comment}") ?>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </li>
-    </ul>
+    <h2><?= Html::encode("{$checklistItem->item}") ?></h2>
+    <div class="radio-inline">
+        <label>
+            <input type="radio" name="radioOptions" id="radioOptions1" value="1" <?= $checklistItem->state_id == 1 ? 'checked' : '' ?>>
+            <?= State::getFullStateInfo(1)->caption ?>
+        </label>
+    </div>
+    <div class="radio-inline">
+        <label>
+            <input type="radio" name="radioOptions" id="radioOptions2" value="2" <?= $checklistItem->state_id == 2 ? 'checked' : '' ?>>
+            <?= State::getFullStateInfo(2)->caption ?>
+        </label>
+    </div>
+    <div class="radio-inline">
+        <label>
+            <input type="radio" name="radioOptions" id="radioOptions3" value="3" <?= $checklistItem->state_id == 3 ? 'checked' : '' ?>>
+            <?= State::getFullStateInfo(3)->caption ?>
+        </label>
+    </div>
+
+    <form action="<?= Yii::$app->urlManager->createUrl(['checklist/index']) ?>">
+
+        <div class="form-group">
+            <label for="commnet">Kommentar</label>
+            <input type="text" class="form-control" id="comment" value="<?= Html::encode("{$checklistItem->comment}") ?>">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Speichern</button>
+    </form>
+
+    <?php if (!empty($checklistItemHistory)) : ?>
+        <h2><small>Verlauf</small></h2>
+        <ul class="list-group">
+            <?php foreach ($checklistItemHistory as $history) : ?>
+                <li class="list-group-item checkered">
+                    <?= Html::encode("{$history->created_at}") . " - " . State::getFullStateInfo($history->state_id_new)->caption . " - " . Html::encode("{$history->comment}") ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
 </div>

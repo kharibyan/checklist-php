@@ -41,11 +41,12 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            // ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Checklisten', 'url' => ['/checklist/index']],
+            ['label' => 'Templates', 'url' => ['/checklist-template/index']],
             Yii::$app->user->isGuest ? (['label' => 'Einloggen', 'url' => ['/site/login']]) : ('<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Abmelden (' . UserTable::getFullUserInfoById(Yii::$app->user->identity->id)->name . ')',
+                    'Abmelden (' . UserTable::getFullUserInfo(Yii::$app->user->identity->id)->name . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -59,6 +60,26 @@ AppAsset::register($this);
     <div>
         <?= $content ?>
     </div>
+
+    <div id="alert-placeholder"></div>
+
+    <?php if (Yii::$app->session->hasFlash('success')) : ?>
+        <div class="alert-message">
+            <div class="alert-inner-message alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong><?= Yii::$app->session->getFlash('success') ?></strong>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if (Yii::$app->session->hasFlash('error')) : ?>
+        <div class="alert-message">
+            <div class="alert-inner-message alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong><?= Yii::$app->session->getFlash('error') ?></strong>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <?php $this->endBody() ?>
 </body>

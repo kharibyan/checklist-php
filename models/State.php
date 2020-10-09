@@ -44,4 +44,9 @@ class State extends \yii\db\ActiveRecord
             'comment_mandatory' => 'Comment Mandatory',
         ];
     }
+
+    public static function getFullStateInfo($id)
+    {
+        return static::findOne(['id' => $id]);
+    }
 }

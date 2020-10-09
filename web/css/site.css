@@ -122,14 +122,14 @@ a.desc:after {
     padding: 0px;
 }
 
-.panel-body table tr td:first-child {
+.panel-body table:not(.template-table) tr td:first-child {
     padding-left: 10px;
     padding-right: 5px;
     width: 1%;
     white-space: nowrap;
 }
 
-.panel-body table tr td:last-child {
+.panel-body table:not(.template-table) tr td:last-child {
     padding-left: 5px;
     padding-right: 10px;
 }
@@ -142,7 +142,30 @@ a.desc:after {
     background-color: green;
 } */
 
+.btn .glyphicon {
+    margin-right: 10px;
+}
+
 .glyphicon-none:before {
     content: "\2122";
     color: transparent !important;
 }
+
+.checkered {
+    border: 0;
+}
+
+.checkered:nth-child(odd) {
+    background-color: #f5f5f5;
+}
+
+/* .alert-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.alert-inner-message {
+    margin: 0 auto;
+} */
