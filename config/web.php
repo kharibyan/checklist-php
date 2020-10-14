@@ -43,14 +43,17 @@ $config = [
             ],
         ],
         'db' => $db,
-        
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'checklist-template' => 'checklist-template/index',
+                'checklist-template/<currentChecklist:\d+>' => 'checklist-template/index',
+                'checklist-template/<currentChecklist:\d+>/<currentItem:\d+>' => 'checklist-template/index',
             ],
         ],
-        
+
     ],
     'params' => $params,
 ];

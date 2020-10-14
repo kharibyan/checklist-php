@@ -5,10 +5,11 @@ use yii\helpers\Html;
 ?>
 
 <div>
-    <form>
+    <form action="<?= Yii::$app->urlManager->createUrl(['checklist-template/save-template-changes']) ?>" method="post">
+        <input type="hidden" name="checklist_template_id" value="<?= Html::encode("{$checklistTemplate->id}") ?>" />
         <div class="form-group">
             <label for="templateName">Name</label>
-            <input type="text" class="form-control" id="templateName" value="<?= Html::encode("{$checklistTemplate->name}") ?>">
+            <input type="text" class="form-control" name="name" value="<?= Html::encode("{$checklistTemplate->name}") ?>">
         </div>
 
         <button type="submit" class="btn btn-primary ">Speichern</button>

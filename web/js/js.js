@@ -1,5 +1,11 @@
 "use strict";
 
+$(function () {
+    setTimeout(function () {
+        $('.alert-message').remove();
+    }, 5000);
+});
+
 function myAlert(type, message, duration = 5) {
     $('#alert-placeholder').append(
         `<div class="alert alert-${type} alert-dismissible">
@@ -15,18 +21,18 @@ function myAlert(type, message, duration = 5) {
     }, duration * 1000);
 }
 
-function myAjaxRequest(form) {
+function myAjaxRequest(url, data) {
     return new Promise((resolve, reject) => {
-        let form_data = $(form).serialize();
-        let action_url = $(form).attr('action');
+
+        console.log(url, data)
 
         $.ajax({
             method: 'POST',
-            url: action_url,
-            data: form_data
+            url: url,
+            data: data
         })
             .done(function (result) {
-                console.log(result);
+
                 if (result)
                     return resolve();
                 else
