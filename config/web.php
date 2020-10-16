@@ -4,6 +4,7 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
+    'timeZone' => 'Europe/Berlin',
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -51,6 +52,9 @@ $config = [
                 'checklist-template' => 'checklist-template/index',
                 'checklist-template/<currentChecklist:\d+>' => 'checklist-template/index',
                 'checklist-template/<currentChecklist:\d+>/<currentItem:\d+>' => 'checklist-template/index',
+                'checklist' => 'checklist/index',
+                'checklist/<currentChecklist:\d+>' => 'checklist/index',
+                'checklist/<currentChecklist:\d+>/<currentItem:\d+>' => 'checklist/index',
             ],
         ],
 

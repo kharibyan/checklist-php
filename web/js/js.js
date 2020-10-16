@@ -24,7 +24,7 @@ function myAlert(type, message, duration = 5) {
 function myAjaxRequest(url, data) {
     return new Promise((resolve, reject) => {
 
-        console.log(url, data)
+        // console.log(url, data)
 
         $.ajax({
             method: 'POST',
