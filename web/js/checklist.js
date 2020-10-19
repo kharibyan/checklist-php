@@ -24,10 +24,31 @@ $('#details-view').on('change', '#radioStateId', function () {
 });
 
 $('#checklist-accordion').on('click', '.panel-heading', function () {
+
+    if ((currentChecklistId === 0 && currentItemId === 0) || (currentChecklistId !== $(this).attr('id'))) {
+        currentChecklistId = $(this).attr('id');
+        currentItemId = 0;
+        $('#details-view').load('/checklist/checklist-details?checklistId=' + $(this).attr('id'));
+    }
+
+    else if ((currentChecklistId === $(this).attr('id')) && currentItemId === 0) {
+        currentChecklistId = 0;
+        $('#details-view').empty();
+    }
+
+    else if ((currentChecklistId === $(this).attr('id')) && currentItemId !== 0) {
+        currentChecklistId = $(this).attr('id');
+        currentItemId = 0;
+        $('#details-view').load('/checklist/checklist-details?checklistId=' + $(this).attr('id'));
+        return false;
+    }
+});
+
+/* $('#checklist-accordion').on('click', '.panel-heading', function () {
     $('#details-view').load('/checklist/checklist-details?checklistId=' + $(this).attr('id'));
     currentChecklistId = $(this).attr('id');
     currentItemId = 0;
-});
+}); */
 
 /* $('#checklist-accordion').on('click', '.panel-heading', function () {
     if ($(this).attr('aria-expanded') === "false")

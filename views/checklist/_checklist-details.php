@@ -15,13 +15,13 @@ use app\models\State;
         <div class="form-group">
             <div class="radio-inline">
                 <label>
-                    <input type="radio" name="state_id" id="radioOptions1" value="1" checked <?= $checklist->ready ? '' : 'disabled' ?>>
+                    <input type="radio" name="state_id" id="radioOptions1" value="1" checked>
                     <?= State::getFullStateInfo(1)->caption ?>
                 </label>
             </div>
             <div class="radio-inline">
                 <label>
-                    <input type="radio" name="state_id" id="radioOptions2" value="2">
+                    <input type="radio" name="state_id" id="radioOptions2" value="2" <?= $checklist->ready ? '' : 'disabled' ?>>
                     <?= State::getFullStateInfo(2)->caption ?>
                 </label>
             </div>
