@@ -46,7 +46,7 @@ $this->registerJsFile('js/checklist-template.js', ['depends' => [yii\web\JqueryA
     </div>
 
     <div class="row">
-        <div class="col-md-4" style="padding-left: 0;">
+        <div class="col-md-4 col-scrollable" style="padding-left: 0;">
             <div id="checklist-template-accordion" class="panel-group">
                 <?php foreach ($checklistTemplates as $template) : ?>
                     <div class="panel panel-default">
@@ -59,7 +59,7 @@ $this->registerJsFile('js/checklist-template.js', ['depends' => [yii\web\JqueryA
                         </div>
                         <div id=<?= "collapse" . $template->id ?> class="panel-collapse collapse">
                             <div class="panel-body">
-                                <table class="table template-table">
+                                <table class="table template-table table-hover">
                                     <?php foreach ($template->checklistItemTemplates as $itemTemplate) : ?>
                                         <tr id=<?= $itemTemplate->id ?>>
                                             <td>

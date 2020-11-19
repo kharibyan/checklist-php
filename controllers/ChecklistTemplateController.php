@@ -82,6 +82,7 @@ class ChecklistTemplateController extends \yii\web\Controller
     {
         $checklistTemplates = $this->getChecklistTemplates();
         $userList = UserTable::find()
+            ->orderBy(['name' => SORT_ASC])
             ->all();
 
         return $this->render('index', [

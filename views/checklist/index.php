@@ -34,7 +34,9 @@ $this->registerJsFile('js/checklist.js', ['depends' => [yii\web\JqueryAsset::cla
 
     <div class="row">
 
-        <div class="col-md-4" style="padding-left: 0;">
+        <div class="col-md-4 col-scrollable" style="padding-left: 0;">
+
+
             <div id="checklist-accordion" class="panel-group">
                 <?php foreach ($checklists as $checklist) : ?>
                     <div class="panel panel-default">
@@ -47,7 +49,7 @@ $this->registerJsFile('js/checklist.js', ['depends' => [yii\web\JqueryAsset::cla
                         </div>
                         <div id=<?= "collapse" . $checklist->id ?> class="panel-collapse collapse">
                             <div class="panel-body">
-                                <table class="table">
+                                <table class="table table-hover">
                                     <?php foreach ($checklist->checklistItems as $checklistItem) : ?>
                                         <tr id=<?= $checklistItem->id ?>>
                                             <td>
@@ -74,6 +76,8 @@ $this->registerJsFile('js/checklist.js', ['depends' => [yii\web\JqueryAsset::cla
                     </div>
                 <?php endforeach; ?>
             </div>
+
+
         </div>
         <div id="details-view" class="col-md-8">
 

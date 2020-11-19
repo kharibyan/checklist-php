@@ -31,8 +31,8 @@ AppAsset::register($this);
     $this->beginBody();
 
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
+        /* 'brandLabel' => Yii::$app->name,
+        'brandUrl' => Yii::$app->homeUrl, */
         'options' => [
             'class' => 'navbar-inverse',
             'style' => 'margin-bottom: 0;'
@@ -43,6 +43,8 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Checklisten', 'url' => ['/checklist/index']],
             ['label' => 'Templates', 'url' => ['/checklist-template/index']],
+            ['label' => 'Benutzer Checklisten', 'url' => ['/user-checklists/index']],
+            ['label' => 'Checklisten Terminplan', 'url' => ['/schedule/index']],
             Yii::$app->user->isGuest ? (['label' => 'Einloggen', 'url' => ['/site/login']]) : ('<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(

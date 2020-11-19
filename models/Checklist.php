@@ -22,6 +22,7 @@ class Checklist extends \yii\db\ActiveRecord
 
     public $checklistItems;
     public $ready;
+    public $user_name;
 
     /**
      * {@inheritdoc}
@@ -66,5 +67,10 @@ class Checklist extends \yii\db\ActiveRecord
     public function getChecklistItems()
     {
         return $this->hasMany(ChecklistItem::class, ['checklist_id' => 'id']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(UserTable::class, ['id' => 'assigned_to_user_id']);
     }
 }

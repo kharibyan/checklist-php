@@ -1,6 +1,5 @@
 html, body {
     height: 100%;
-    
 }
 
 /* .wrap {
@@ -170,3 +169,25 @@ a.desc:after {
 .alert-inner-message {
     margin: 0 auto;
 } */
+
+.user-checklists-td {
+    border-top: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-checklists-td:last-child {
+    border-right: 1px solid #ddd;
+}
+
+/* tr:hover {
+    background-color: #f5f5f5;
+} */
+
+input[readonly] {
+    background-color: transparent!important;
+}
+
+.col-scrollable {
+    max-height: calc(100vh - 110px)!important;
+    overflow-y: auto!important;
+}
